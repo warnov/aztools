@@ -119,9 +119,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\LuisController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
-    <Compile Include="Model\WeatherWrapper.cs" />
+    <Compile Include="Model\LuisAnalytics.cs" />
+    <Compile Include="Model\TextAnalytics.cs" />
+    <Compile Include="Model\WeatherAnalytics.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

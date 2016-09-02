@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace Neibot.Model
 {
@@ -46,7 +49,7 @@ namespace Neibot.Model
         public int sunset { get; set; }
     }
 
-    public class WeatherWrapper
+    public class WeatherAnalytics
     {
         public Coord coord { get; set; }
         public List<Weather> weather { get; set; }
@@ -59,5 +62,22 @@ namespace Neibot.Model
         public int id { get; set; }
         public string name { get; set; }
         public int cod { get; set; }
-    }
+
+        public static double GetTemperature (string city)
+        {
+            var temp = 0d;
+            using (var hc = new HttpClient())
+            {
+                hc.BaseAddress = new Uri("http://api.openweathermap.org/data/2.5/weather");
+                var jsonWeatherString = hc.GetStringAsync($"?q={city}&APPID=b45f3fb5f8b4200062d1bbb572ffed97").Result;
+                var jsonWeather = JsonConvert.DeserializeObject<WeatherAnalytics>(jsonWeatherString);
+                var kelvin = jsonWeather?.main?.temp ?? 0;
+                if (kelvin != 0)
+                {
+                    temp = kelvin - 273.15;                    
+                }
+            }
+            return temp;
+        }
+    }    
 }
