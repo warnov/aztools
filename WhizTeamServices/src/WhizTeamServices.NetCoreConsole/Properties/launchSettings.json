@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "WhizTeamServices.NetCoreConsole": {
-      "commandName": "Project",
-      "commandLineArgs": "warnov DeleteIntelappIntegrations \"Integrations for Intelapp Customers\""
-    }
-  }
-}

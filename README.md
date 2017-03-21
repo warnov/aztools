@@ -1,2 +1,2 @@
-# WeatherBot
-A bot for telling you the weather in a city
+# AzTools
+A bunch of tools for working with Azure
